@@ -1,0 +1,28 @@
+{
+    "name": "ekipower/nganluong-simulator-bundle",
+    "type": "symfony-bundle",
+    "description": "Nganluong payment Simulator",
+    "keywords": ["payment", "payum", "ekipower", "nganluong", "ngan luong", "sandbox", "simulator"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nguyen Tien Hy",
+            "email": "ngtienhy@gmail.com"
+        },
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "ekipower/nganluong-simulator": "dev-master"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-4": { "Eki\\Nganluong\\SimulatorBundle": "" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
+    }
+}

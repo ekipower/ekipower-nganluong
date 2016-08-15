@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <div>
+			{% if messages is defined %}
+				<ul>
+				{% for message in messages %}
+				<li>{{ message }}</li>
+				{% endfor %}
+				</ul>
+			{% endif %}
+        </div>
+    </body>
+</html>

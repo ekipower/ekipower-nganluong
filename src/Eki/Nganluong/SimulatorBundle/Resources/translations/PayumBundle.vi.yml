@@ -1,0 +1,6 @@
+form:
+    credit_card:
+        holder: Tên chủ thẻ
+        expire_at: Ngày hết hạn
+        number: Số thẻ
+        security_code: Mã CVV

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="eki.nganluong.form.type.bank_choice.class">Eki\Payum\NganluongBundle\Form\Type\BankChoiceType</parameter>
+        <parameter key="eki.nganluong.form.type.bank_list.class">Eki\Payum\NganluongBundle\Form\Type\BankListType</parameter>
+    </parameters>
+
+    <services>
+        <service id="eki.nganluong.form.type.bank_choice" class="%eki.nganluong.form.type.bank_choice.class%">
+            <tag name="form.type" alias="eki_nganluong_bank_choice" />
+        </service>
+	
+        <service id="eki.nganluong.form.type.bank_list" class="%eki.nganluong.form.type.bank_list.class%">
+            <tag name="form.type" alias="eki_nganluong_bank_list" />
+        </service>
+    </services>
+</container>

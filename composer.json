@@ -1,0 +1,29 @@
+{
+    "name": "ekipower/nganluong",
+    "type": "symfony-bundle",
+    "description": "Ekipower for Nganluong",
+    "keywords": ["payment", "payum", "nganluong", "ngan luong", "bundle", "symfony", "ekipower"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nguyen Tien Hy",
+            "email": "ngtienhy@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+		"ekipower/symfony-helper":	"dev-master",
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-0": { "Eki\\": "src/" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
+    },
+    "minimum-stability": "dev"
+}

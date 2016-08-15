@@ -1,0 +1,8 @@
+eki:
+    nganluong:
+        form:
+            bank_list:
+                code: Ngân hàng
+            bank_choice:
+                bank_choice: Ngân hàng
+                select: Chọn ngân hàng...

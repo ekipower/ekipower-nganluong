@@ -1,0 +1,8 @@
+eki:
+    nganluong:
+        form:
+            bank_list:
+                code: Bank
+            bank_choice:
+                bank_choice: Bank
+                select: Select a bank

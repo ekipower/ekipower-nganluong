@@ -1,0 +1,32 @@
+nl_simulator:
+    path: /simulator
+    defaults:
+        _controller: nganluong.simulator.controller.simulate:simulateAction
+    methods: [POST]
+
+nl_checkout_url:
+    path: /checkout/url/{paymentMethod}
+    defaults:
+        _controller: EkiNganluongSimulatorBundle:Simulate:checkoutUrl
+    requirements:
+        paymentMethod: visa|atm|ttvp|nl
+
+nl_simulator_error:
+    path: /simulator/return/{code}
+    defaults:
+        _controller: EkiNganluongSimulatorBundle:Simulate:error
+
+nl_credit_card_obtain:
+    path: /obtain/credit/card/{token}
+    defaults:
+        _controller: nganluong.simulator.controller.credit:obtainCreditCardAction
+
+nl_atm_card_obtain:
+    path: /obtain/atm/card/{token}
+    defaults:
+        _controller: nganluong.simulator.controller.bank:obtainATMCardAction
+
+nl_nl_account_obtain:
+    path: /obtain/nl/account/{token}
+    defaults:
+        _controller: nganluong.simulator.controller.nl:obtainNLAccountAction

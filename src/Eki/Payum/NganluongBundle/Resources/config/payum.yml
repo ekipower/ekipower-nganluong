@@ -1,0 +1,32 @@
+payments:
+#    nganluong:
+#        nganluong:
+#            merchant_id:        %nganluong.merchant_id%
+#            merchant_password:  %nganluong.merchant_password%
+#            receiver_email:     %nganluong.receiver_email%
+#            sandbox:            %nganluong.sandbox%
+#            sandbox_url:        %nganluong.sandbox_url%
+    nganluong_visa:
+        nganluong_visa:
+            merchant_id:        %nganluong.merchant_id%
+            merchant_password:  %nganluong.merchant_password%
+            receiver_email:     %nganluong.receiver_email%
+            sandbox:            %nganluong.sandbox%
+            sandbox_url:        %nganluong.sandbox_url%
+            payment_method:     %nganluong.payment_method.nganluong_visa%
+    nganluong_atm:        
+        nganluong_atm:
+            merchant_id:        %nganluong.merchant_id%
+            merchant_password:  %nganluong.merchant_password%
+            receiver_email:     %nganluong.receiver_email%
+            sandbox:            %nganluong.sandbox%
+            sandbox_url:        %nganluong.sandbox_url%
+            payment_method:     %nganluong.payment_method.nganluong_atm%
+    nganluong_nl:        
+        nganluong_nl:
+            merchant_id:        %nganluong.merchant_id%
+            merchant_password:  %nganluong.merchant_password%
+            receiver_email:     %nganluong.receiver_email%
+            sandbox:            %nganluong.sandbox%
+            sandbox_url:        %nganluong.sandbox_url%
+            payment_method:     %nganluong.payment_method.nganluong_nl%

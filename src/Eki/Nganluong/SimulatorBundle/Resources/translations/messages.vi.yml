@@ -1,0 +1,17 @@
+eki:
+    form:
+        credit_card:
+            holder: Chủ thẻ
+            expire_at: Hạn thẻ
+            number: Số thẻ
+            security_code: Mã CVV
+            expiry_month: Tháng (hạn thẻ)
+            expiry_year: Năm (hạn thẻ)
+            type: Loại thẻ
+        nl_account:
+            email: Thư điện tử
+            password:
+                first_options: Mật khẩu
+                second_options: Lặp lại mật khẩu
+                invalid_message: Các trường mật khẩu không khớp nhau.
+            

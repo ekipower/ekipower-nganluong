@@ -1,0 +1,88 @@
+parameters:
+    nganluong.simulator.transaction_persistent.class: Eki\Nganluong\Simulator\Persistent\CachePersistent
+    nganluong.simulator.transaction_manager.class: Eki\Nganluong\Simulator\Transaction\TransactionManager
+    nganluong.simulator.api.class: Eki\Nganluong\Simulator\Api\Api
+    nganluong.simulator.controller.simulate.class: Eki\Nganluong\SimulatorBundle\Controller\SimulateController
+    nganluong.simulator.controller.credit.class: Eki\Nganluong\SimulatorBundle\Controller\CreditController
+    nganluong.simulator.controller.bank.class: Eki\Nganluong\SimulatorBundle\Controller\BankController
+    nganluong.simulator.controller.nl.class: Eki\Nganluong\SimulatorBundle\Controller\NLController
+    nganluong.simulator.processor.credit_card.class: Eki\Nganluong\Simulator\Processor\CreditCardProcessor
+    nganluong.simulator.processor.bank.class: Eki\Nganluong\Simulator\Processor\BankProcessor
+    nganluong.simulator.processor.nl.class: Eki\Nganluong\Simulator\Processor\NLProcessor
+    nganluong.simulator.processor.credit_card.data_class: Payum\Core\Model\CreditCard
+    nganluong.simulator.processor.bank.data_class: Eki\Nganluong\Simulator\Model\AtmCard
+    nganluong.simulator.processor.nl.data_class: Eki\Nganluong\Simulator\Model\NLWallet
+    
+    eki.form.type.atm_card.class: Eki\Nganluong\SimulatorBundle\Form\Type\AtmCardType
+    eki.form.type.nl_account.class: Eki\Nganluong\SimulatorBundle\Form\Type\NLWalletType
+    
+services:
+    nganluong.simulator.transaction_persistent:
+        class: "%nganluong.simulator.transaction_persistent.class%"
+        calls:
+            - ['setCache', ['@doctrine_cache.providers.nganluong_simulator_transaction']]
+            - ['setLogger', ['@logger']]
+
+    nganluong.simulator.transaction_manager:
+        class: "%nganluong.simulator.transaction_manager.class%"
+        calls:
+            - ['setPersistent', ['@nganluong.simulator.transaction_persistent']]
+            - ['setLogger', ['@logger']]
+        
+    nganluong.simulator.api:
+        class: "%nganluong.simulator.api.class%"
+        calls:
+            - ['setLogger', ['@logger']]
+            - ['setTransactionManager', ['@nganluong.simulator.transaction_manager']]
+            
+    nganluong.simulator.processor.credit_card:
+        class: "%nganluong.simulator.processor.credit_card.class%"
+        calls:
+            - ['setDataClass', ['%nganluong.simulator.processor.credit_card.data_class%']]
+
+    nganluong.simulator.processor.bank:
+        class: "%nganluong.simulator.processor.bank.class%"
+        calls:
+            - ['setDataClass', ['%nganluong.simulator.processor.bank.data_class%']]
+
+    nganluong.simulator.processor.nl:
+        class: "%nganluong.simulator.processor.nl.class%"
+        calls:
+            - ['setDataClass', ['%nganluong.simulator.processor.nl.data_class%']]
+        
+    nganluong.simulator.controller.simulate:
+        class: "%nganluong.simulator.controller.simulate.class%"
+        calls:
+            - ['setContainer', ['@service_container']]
+            - ['setApi', ['@nganluong.simulator.api']]
+
+    nganluong.simulator.controller.credit:
+        class: "%nganluong.simulator.controller.credit.class%"
+        calls:
+            - ['setContainer', ['@service_container']]
+            - ['setApi', ['@nganluong.simulator.api']]
+            - ['setProcessor', ['@nganluong.simulator.processor.credit_card']]
+
+    nganluong.simulator.controller.bank:
+        class: "%nganluong.simulator.controller.bank.class%"
+        calls:
+            - ['setContainer', ['@service_container']]
+            - ['setApi', ['@nganluong.simulator.api']]
+            - ['setProcessor', ['@nganluong.simulator.processor.bank']]
+
+    nganluong.simulator.controller.nl:
+        class: "%nganluong.simulator.controller.nl.class%"
+        calls:
+            - ['setContainer', ['@service_container']]
+            - ['setApi', ['@nganluong.simulator.api']]
+            - ['setProcessor', ['@nganluong.simulator.processor.nl']]
+
+    eki.form.type.atm_card:
+        class: "%eki.form.type.atm_card.class%"
+        tags:
+            - { name: form.type, alias: eki_atm_card }
+        
+    eki.form.type.nl_account:
+        class: "%eki.form.type.nl_account.class%"
+        tags:
+            - { name: form.type, alias: eki_nl_account }
